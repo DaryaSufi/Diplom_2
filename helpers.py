@@ -1,6 +1,4 @@
 from faker import Faker
-import requests
-from constants import burgers_url
 def create_user():
     fake = Faker()
     email = fake.email()
