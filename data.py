@@ -1,0 +1,11 @@
+class Data:
+    incorrect_log_and_pass_message = "email or password are incorrect"
+    ingr_1 = "61c0c5a71d1f82001bdaaa6e"
+    ingr_2 = "61c0c5a71d1f82001bdaaa72"
+    unauth_user_message = "You should be authorised"
+    an_existing_user_message = "User already exists"
+    user_without_required_fields_message = "Email, password and name are required fields"
+    name = "Lidiya"
+    email = "lidiya@yandex.ru"
+    unauthorization_user_message = "You should be authorised"
+    order_without_ingr_message = "Ingredient ids must be provided"

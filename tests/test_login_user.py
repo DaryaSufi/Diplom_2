@@ -2,6 +2,8 @@ import allure
 import requests
 from constants import burgers_url
 from faker import Faker
+from api_metods import User
+from data import Data
 class TestLoginUser:
     @allure.title("Проверка успешного логина под существующим пользователем")
     def test_login_under_an_existing_user(self, create_and_delete_user_for_login):
@@ -10,7 +12,7 @@ class TestLoginUser:
             "email": user_info['user']['email'],
             "password": payload['password']
         }
-        user_response = requests.post(f"{burgers_url}/auth/login", json=login_data)
+        user_response = requests.post(f"{burgers_url}{User.auth}", json=login_data)
         user_response_json=user_response.json()
         assert user_response.status_code==200
         assert user_response_json['success'] is True
@@ -23,9 +25,9 @@ class TestLoginUser:
             "email": fake.email(),
             "password": fake.password()
         }
-        user_response = requests.post(f"{burgers_url}/auth/login", json=login_data)
+        user_response = requests.post(f"{burgers_url}{User.auth}", json=login_data)
         user_response_json = user_response.json()
         assert user_response.status_code == 401
-        assert user_response_json.get("message") == "email or password are incorrect"
+        assert user_response_json.get("message") == Data.incorrect_log_and_pass_message
 
 
